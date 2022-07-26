@@ -8,6 +8,10 @@ export default function addButton({item}) {
 
     function handleClick(){
         cart.addItemToCart(item)
+        if (!cart.isOpen) {
+          cart.openCart();
+        }
+       
     }
   return (
     <button className={style.button} onClick={handleClick}>Add to Cart</button>

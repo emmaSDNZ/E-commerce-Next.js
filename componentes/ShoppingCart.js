@@ -9,6 +9,12 @@ export default function ShoppingCart() {
     function handleCloseCart(){
         cart.closeCart()
     }
+    function getTotal(){
+        const total = cart.items.reduce((acc, item)=>
+        acc + item.qty * item.price, 0
+        )
+        return total
+    }
   return (
     <div className={style.shoppingCart} style={{display: cart.isOpen? 'block' : 'none'}}>
         <button onClick={handleCloseCart}  className={style.close}>Close</button>
@@ -26,6 +32,10 @@ export default function ShoppingCart() {
                 showAs= "ListItem"
                 qty={item.qty}
             />)}
+        </div>
+
+        <div className={style.total}>
+            Total: ${getTotal()}
         </div>
             </>}
        
