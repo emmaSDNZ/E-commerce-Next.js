@@ -2,9 +2,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { convertToPath } from '../lib/utils'
+import AddButton from './addButton'
 import style from '../styles/product.module.css'
 
-export default function Product({item, showAs}) {
+export default function Product({item, showAs, qty = 0}) {
   
     if(showAs === "Page"){
         return (
@@ -23,7 +24,7 @@ export default function Product({item, showAs}) {
                     </div>
                     <div className={style.price}>${item.data.price}</div>
                     <div>{item.data.description}</div>
-                    <div><button>ADD TO CART</button></div>
+                    <div><AddButton item={item} /></div>
                 </div>
             </div>
         )
@@ -57,7 +58,7 @@ export default function Product({item, showAs}) {
             </div>
 
             <div>${item.price}</div>
-            <div><button>ADD TO CART</button></div>
+            <div><AddButton item={item}/></div>
         </div>
     )
   

@@ -1,24 +1,35 @@
-import React from 'react'
-import Link from 'next/link'
-import style from '../styles/menu.module.css'
-export default function Menu() {
-  return (
-   <nav className={style.menu}>
-    <div>
-        <Link href='/'>
-            <a className={style.link}>Home</a>
-        </Link>
-        <Link href='/store'>
-            <a className={style.link}>Store</a>
-        </Link>
-        <Link href='/faq'>
-            <a className={style.link}>FAQ</a>
-        </Link>
-    </div>
+import Link from "next/link";
 
-    <div>
-        <a href='#'> Cart(0)</a>
-    </div>
-   </nav>
-  )
+import style from "../styles/menu.module.css";
+import { useAppContext } from "./StateWrapper";
+
+export default function Menu() {
+  const cart = useAppContext();
+
+  function handleClickCart(e) {
+    e.preventDefault();
+    cart.openCart();
+  }
+  return (
+    <nav className={style.menu}>
+      <div>
+        <Link href="/">
+          <a className={style.link}>Home</a>
+        </Link>
+
+        <Link href="/store">
+          <a className={style.link}>Store</a>
+        </Link>
+
+        <Link href="/faq">
+          <a className={style.link}>FAQ</a>
+        </Link>
+      </div>
+
+      <div></div>
+      <a href="#" className={style.link} onClick={handleClickCart}>
+        Carrito ({cart.getNumberOfItems()})
+      </a>
+    </nav>
+  );
 }

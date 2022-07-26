@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import style from '../styles/layaout.module.css'
 import Menu from './Menu'
+import ShoppingCart from './ShoppingCart'
 
 export default function Layaout({children, title}) {
  
@@ -14,6 +15,8 @@ export default function Layaout({children, title}) {
         </Head>
 
         <Menu/>
+
+        <ShoppingCart/>
         
         <div className={style.container}>
             {children}
